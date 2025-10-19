@@ -1,4 +1,3 @@
-/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +24,6 @@ body {
     overflow: auto;
 }
 
-/* Profile Card Styles */
 .profile-card {
     background: #ffffff;
     border-radius: 12px;
@@ -44,7 +42,6 @@ body {
     overflow-y: auto;
 }
 
-/* Avatar Section */
 .avatar-section {
     display: flex;
     flex-direction: column;
@@ -113,7 +110,6 @@ body {
     font-weight: 500;
 }
 
-/* Content Section */
 .content-section {
     display: flex;
     flex-direction: column;
@@ -146,7 +142,6 @@ body {
     font-weight: 500;
 }
 
-/* Bio Section */
 .user-bio {
     font-size: 1.125rem;
     color: #333333;
@@ -157,7 +152,6 @@ body {
     font-weight: 400;
 }
 
-/* Social Links */
 .social-links {
     margin: 16px 0;
 }
@@ -196,7 +190,6 @@ body {
     border-color: #666666;
 }
 
-/* Hobbies and Dislikes Sections */
 .hobbies-section,
 .dislikes-section {
     background: #f8f8f8;
@@ -245,7 +238,6 @@ body {
     border-color: #cccccc;
 }
 
-/* Responsive Design */
 @media (min-width: 768px) {
     .profile-card {
         flex-direction: row;
@@ -302,7 +294,6 @@ body {
     }
 }
 
-/* Mobile Optimizations */
 @media (max-width: 767px) {
     body {
         padding: 10px;
@@ -349,7 +340,6 @@ body {
     }
 }
 
-/* Accessibility Improvements */
 @media (prefers-reduced-motion: reduce) {
     .avatar,
     .social-list li a,
@@ -364,14 +354,12 @@ body {
     }
 }
 
-/* Focus styles for keyboard navigation */
 a:focus,
 button:focus {
     outline: 2px solid #000000;
     outline-offset: 2px;
 }
 
-/* High contrast mode support */
 @media (prefers-contrast: high) {
     .profile-card {
         border: 2px solid #000;
