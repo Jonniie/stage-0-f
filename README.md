@@ -49,8 +49,6 @@ frontend/
 - Local web server (optional but recommended)
 
 
-
-
 #### Live Server (VS Code Extension)
 
 1. Install the "Live Server" extension in VS Code
