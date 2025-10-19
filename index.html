@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main class="container">
+        <article class="profile-card" data-testid="test-profile-card">
+            <figure class="avatar-section" data-testid="test-user-avatar">
+                <div class="avatar-container">
+                    <img src="./public/avatar.svg" 
+                         alt="Profile picture of Jonnie Shizouka" 
+                         class="avatar"
+                         id="profile-avatar">
+                    <div class="avatar-overlay">
+                        <span class="upload-text">Click to upload</span>
+                    </div>
+                </div>
+                <input type="file" 
+                       id="avatar-upload" 
+                       accept="image/*" 
+                       style="display: none;">
+                <figcaption class="avatar-caption">Profile Photo</figcaption>
+            </figure>
+            
+            <div class="content-section">
+                <header class="profile-header">
+                    <h2 class="user-name" data-testid="test-user-name">Jonnie Shizouka</h2>
+                    <p class="current-time" data-testid="test-user-time">Loading...</p>
+                </header>
+                
+                <p class="user-bio" data-testid="test-user-bio">
+                    Software engineer passionate about creating accessible and user-friendly web applications. 
+                    I enjoy solving complex problems and building meaningful digital experiences that make a difference.
+                </p>
+                
+                <nav class="social-links" data-testid="test-user-social-links">
+                    <ul class="social-list">
+                        <li><a href="https://twitter.com/JonnieDev" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               data-testid="test-user-social-twitter">Twitter</a></li>
+                        <li><a href="https://linkedin.com/in/john-areola" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               data-testid="test-user-social-linkedin">LinkedIn</a></li>
+                        <li><a href="https://github.com/jonniie" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               data-testid="test-user-social-github">GitHub</a></li>
+                    </ul>
+                </nav>
+                
+                <section class="hobbies-section">
+                    <h3>Hobbies</h3>
+                    <ul class="hobbies-list" data-testid="test-user-hobbies">
+                        <li>Coding</li>
+                        <li>Gaming</li>
+                        <li>Cooking</li>
+                        <li>Reading</li>
+                        <li>Traveling</li>
+                    </ul>
+                </section>
+                
+                <section class="dislikes-section">
+                    <h3>Dislikes</h3>
+                    <ul class="dislikes-list" data-testid="test-user-dislikes">
+                        <li>Bugs</li>
+                        <li>Inconvenience</li>
+                        <li>Loud Noises</li>
+                        <li>Boring Work</li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
