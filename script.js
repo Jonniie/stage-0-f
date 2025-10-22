@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    initializeContactForm();
+    
     const timeElement = document.querySelector('[data-testid="test-user-time"]');
     
     if (!timeElement) {
@@ -107,6 +109,124 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 });
+
+
+function initializeContactForm() {
+    const form = document.querySelector('[data-testid="test-contact-form"]');
+    const successMessage = document.querySelector('[data-testid="test-contact-success"]');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        clearErrors();
+        const isValid = validateForm();
+        
+        if (isValid) {
+            showSuccessMessage();
+            form.reset();
+        }
+    });
+    
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            clearFieldError(this);
+        });
+    });
+}
+
+function validateForm() {
+    const form = document.querySelector('[data-testid="test-contact-form"]');
+    const name = form.querySelector('[data-testid="test-contact-name"]');
+    const email = form.querySelector('[data-testid="test-contact-email"]');
+    const subject = form.querySelector('[data-testid="test-contact-subject"]');
+    const message = form.querySelector('[data-testid="test-contact-message"]');
+    
+    let isValid = true;
+    
+    if (!validateField(name)) isValid = false;
+    if (!validateField(email)) isValid = false;
+    if (!validateField(subject)) isValid = false;
+    if (!validateField(message)) isValid = false;
+    
+    return isValid;
+}
+
+function validateField(field) {
+    const value = field.value.trim();
+    const fieldName = field.getAttribute('data-testid');
+    const errorElement = document.querySelector(`[data-testid="test-contact-error-${fieldName.split('-').pop()}"]`);
+    
+    if (!value) {
+        showFieldError(field, errorElement, 'This field is required');
+        return false;
+    }
+    
+    if (field.type === 'email') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            showFieldError(field, errorElement, 'Please enter a valid email address');
+            return false;
+        }
+    }
+    
+    if (fieldName.includes('message') && value.length < 10) {
+        showFieldError(field, errorElement, 'Message must be at least 10 characters long');
+        return false;
+    }
+    
+    clearFieldError(field);
+    return true;
+}
+
+function showFieldError(field, errorElement, message) {
+    field.classList.add('error');
+    if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.classList.add('show');
+    }
+}
+
+function clearFieldError(field) {
+    field.classList.remove('error');
+    const fieldName = field.getAttribute('data-testid');
+    const errorElement = document.querySelector(`[data-testid="test-contact-error-${fieldName.split('-').pop()}"]`);
+    if (errorElement) {
+        errorElement.textContent = '';
+        errorElement.classList.remove('show');
+    }
+}
+
+function clearErrors() {
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(error => {
+        error.textContent = '';
+        error.classList.remove('show');
+    });
+    
+    const inputs = document.querySelectorAll('.form-input, .form-textarea');
+    inputs.forEach(input => {
+        input.classList.remove('error');
+    });
+}
+
+function showSuccessMessage() {
+    const successMessage = document.querySelector('[data-testid="test-contact-success"]');
+    if (successMessage) {
+        successMessage.textContent = 'Thank you for your message! I\'ll get back to you soon.';
+        successMessage.classList.add('show');
+        
+        setTimeout(() => {
+            successMessage.classList.remove('show');
+        }, 5000);
+    }
+}
 
 window.ProfileCard = {
     updateTime: function() {

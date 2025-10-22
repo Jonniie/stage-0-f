@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Card</title>
+    <title>John Areola - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <nav class="tab-navigation" data-testid="test-tab-navigation">
+        <button class="tab-button active" data-testid="test-tab-profile">Profile</button>
+        <a href="contact.html" class="tab-button" data-testid="test-tab-contact">Contact</a>
+        <a href="about.html" class="tab-button" data-testid="test-tab-about">About</a>
+    </nav>
+    
     <main class="container">
-        <article class="profile-card" data-testid="test-profile-card">
+        <div class="tab-content active">
+            <article class="profile-card" data-testid="test-profile-card">
             <figure class="avatar-section" data-testid="test-user-avatar">
                 <div class="avatar-container">
                     <img src="./public/avatar.svg" 
@@ -77,8 +84,9 @@
                         <li>Boring Work</li>
                     </ul>
                 </section>
-            </div>
-        </article>
+             </div>
+         </article>
+         </div>
     </main>
     
     <script src="./script.js"></script>
